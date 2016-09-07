@@ -2,7 +2,7 @@
   "name": "PomodoroApp",
   "version": "1.0.0",
   "description": "this is Pomodro technique support tools for Mac OS X/Windows developed by Electron with Mithril.js.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
