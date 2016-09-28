@@ -23,8 +23,8 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // メイン画面の表示。ウィンドウの幅、高さを指定できる
   mainWindow = new BrowserWindow({
-    width: 300,
-    height: 150,
+    width: 400,
+    height: 230,
     transparent: true,
     frame: false
   });
@@ -35,3 +35,67 @@ app.on('ready', function() {
     mainWindow = null;
   });
 });
+
+
+function installMenu() {
+  var Menu = require('menu');
+  if(process.platform == 'darwin') {
+    menu = Menu.buildFromTemplate([
+      {
+        label: 'Electron',
+        submenu: [
+          {
+            label: 'Quit',
+            accelerator: 'Command+Q',
+            click: function() { app.quit(); }
+          },
+        ]
+      },
+      {
+        label: 'View',
+        submenu: [
+          {
+            label: 'Reload',
+            accelerator: 'Command+R',
+            click: function() { mainWindow.restart(); }
+          },
+          {
+            label: 'Toggle Full Screen',
+            accelerator: 'Ctrl+Command+F',
+            click: function() { mainWindow.setFullScreen(!mainWindow.isFullScreen()); }
+          },
+          {
+            label: 'Toggle Developer Tools',
+            accelerator: 'Alt+Command+I',
+            click: function() { mainWindow.toggleDevTools(); }
+          },
+        ]
+      }
+    ]);
+    Menu.setApplicationMenu(menu);
+  } else {
+    menu = Menu.buildFromTemplate([
+      {
+        label: '&View',
+        submenu: [
+          {
+            label: '&Reload',
+            accelerator: 'Ctrl+R',
+            click: function() { mainWindow.restart(); }
+          },
+          {
+            label: 'Toggle &Full Screen',
+            accelerator: 'F11',
+            click: function() { mainWindow.setFullScreen(!mainWindow.isFullScreen()); }
+          },
+          {
+            label: 'Toggle &Developer Tools',
+            accelerator: 'Alt+Ctrl+I',
+            click: function() { mainWindow.toggleDevTools(); }
+          },
+        ]
+      }
+    ]);
+    mainWindow.setMenu(menu);
+  }
+}
