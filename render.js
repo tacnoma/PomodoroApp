@@ -33,7 +33,7 @@ var bar = new ProgressBar.Line('#progressbar-container', {
     var value = Math.round(line.value() * 60 * 25);
     var min = Math.floor(value / 60);
     var sec = Math.round(value % 60);
-    line.setText(min.toString() + ':' + sec.toString());
+    line.setText(("0" + min.toString()).substr(-2) + ':' + ("0" + sec.toString()).substr(-2));
     line.text.style.color = state.color;
   }
 });
