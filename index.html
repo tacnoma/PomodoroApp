@@ -2,14 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="./main.css" rel="stylesheet">
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
     <title>Pomodoro</title>
   </head>
 
   <body>
-    <div id="progressbar-container"></div>
-    <script src="render.js"></script>
-    <input type="submit" name="_reset" value="start", onclick="reset()">
-    <input type="submit" name="_rest" value="Rest", onclick="rest()">
+    <div class="center-block">
+      <button type="button" class="btn btn-danger btn-lg btn-block" id="_reset" onclick="reset()">Work</button>
+      <div id="progressbar-container"></div>
+      <script src="render.js"></script>
+      <button type="button" class="btn btn-success btn-lg btn-block" id="_rest" onclick="rest()">Rest</button>
+    </div>
   </body>
 </html>
